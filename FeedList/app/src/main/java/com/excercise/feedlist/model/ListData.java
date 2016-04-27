@@ -9,7 +9,17 @@ import java.util.List;
  */
 public class ListData {
 
+    //Title
     public String title;
 
+    //List of rows json objs
     public List<ListItem> rows;
+
+    @Override
+    public String toString() {
+        return "ListData{" +
+                "title='" + title + '\'' +
+                ", rows=" + rows +
+                '}';
+    }
 }
