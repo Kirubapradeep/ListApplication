@@ -1,7 +1,5 @@
 package com.excercise.feedlist.model;
 
-import android.app.LauncherActivity;
-
 import java.util.List;
 
 /**
@@ -10,10 +8,18 @@ import java.util.List;
 public class ListData {
 
     //Title
-    public String title;
+    private String title;
 
-    //List of rows json objs
-    public List<ListItem> rows;
+    //List of rows json contents
+    private List<ListItem> rows;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public List<ListItem> getRows() {
+        return rows;
+    }
 
     @Override
     public String toString() {

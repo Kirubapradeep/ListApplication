@@ -14,7 +14,7 @@ import retrofit2.Response;
 public class ListDemoPresenterImpl implements ListDemoPresenter, Callback<ListData> {
 
     private final ListDemoView mView;
-    private ListDemoModel mModel;
+    private final ListDemoModel mModel;
 
     public ListDemoPresenterImpl(ListDemoView view) {
         mView = view;
@@ -33,8 +33,8 @@ public class ListDemoPresenterImpl implements ListDemoPresenter, Callback<ListDa
          * Populate the View with the Data once the response is successful
          */
         if (response.isSuccessful()) {
-            mView.setTitle(response.body().title);
-            mView.populateData(response.body().rows);
+            mView.setTitle(response.body().getTitle());
+            mView.populateData(response.body().getRows());
         } else {
             mView.showError(response.message());
         }

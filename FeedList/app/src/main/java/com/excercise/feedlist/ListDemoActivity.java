@@ -24,9 +24,6 @@ public class ListDemoActivity extends AppCompatActivity implements ListDemoView,
     private RelativeLayout mRootView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-
     private ListDemoPresenter mPresenter;
 
     @Override
@@ -41,9 +38,8 @@ public class ListDemoActivity extends AppCompatActivity implements ListDemoView,
         mListView = (RecyclerView) findViewById(R.id.demo_list);
         mRootView = (RelativeLayout) findViewById(R.id.rootview);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.pull_to_refresh);
-
-        mLayoutManager = new LinearLayoutManager(this);
-        mListView.setLayoutManager(mLayoutManager);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        mListView.setLayoutManager(layoutManager);
 
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
@@ -70,8 +66,8 @@ public class ListDemoActivity extends AppCompatActivity implements ListDemoView,
 
         if (getBaseContext() != null  && !isFinishing()) {
             mSwipeRefreshLayout.setRefreshing(false);
-            mAdapter = new ListDemoAdapter(data, this);
-            mListView.setAdapter(mAdapter);
+            RecyclerView.Adapter adapter = new ListDemoAdapter(data, this);
+            mListView.setAdapter(adapter);
         }
     }
 

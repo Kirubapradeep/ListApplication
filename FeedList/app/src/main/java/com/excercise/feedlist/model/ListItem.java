@@ -5,13 +5,25 @@ package com.excercise.feedlist.model;
  */
 public class ListItem {
     // Title String for the Row item
-    public String title;
+    private String title;
 
     // Description String for the Row item
-    public String description;
+    private String description;
 
     // imageHref url for the Row item
-    public String imageHref;
+    private String imageHref;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImageHref() {
+        return imageHref;
+    }
 
     @Override
     public String toString() {
@@ -20,5 +32,5 @@ public class ListItem {
                 ", description='" + description + '\'' +
                 ", imageHref='" + imageHref + '\'' +
                 '}';
-    };
+    }
 }

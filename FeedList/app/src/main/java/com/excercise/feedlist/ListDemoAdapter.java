@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class ListDemoAdapter extends RecyclerView.Adapter<ListDemoAdapter.ViewHolder> {
 
-    private List<ListItem> mItems;
-    private Picasso mPicasso;
+    private final List<ListItem> mItems;
+    private final Picasso mPicasso;
 
     public ListDemoAdapter(List<ListItem> listItems, Context context) {
         mItems = listItems;
@@ -37,10 +37,10 @@ public class ListDemoAdapter extends RecyclerView.Adapter<ListDemoAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         final ListItem item = mItems.get(position);
 
-        holder.title.setText(item.title);
-        holder.description.setText(item.description);
-        mPicasso.load(item.imageHref)
-                .resizeDimen(R.dimen.image_width, R.dimen.image_width)
+        holder.title.setText(item.getTitle());
+        holder.description.setText(item.getDescription());
+        mPicasso.load(item.getImageHref())
+                .resizeDimen(R.dimen.image_width, R.dimen.image_height)
                 .into(holder.imageView);
     }
 
@@ -51,9 +51,9 @@ public class ListDemoAdapter extends RecyclerView.Adapter<ListDemoAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title;
-        TextView description;
-        ImageView imageView;
+        final TextView title;
+        final TextView description;
+        final ImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -12,9 +12,9 @@ public class ListDemoModel {
     /*
      * URL
      */
-    public static final String BASE_URL = "https://dl.dropboxusercontent.com/";
+    private static final String BASE_URL = "https://dl.dropboxusercontent.com/";
 
-    private ListDemoService mService;
+    private final ListDemoService mService;
 
     public ListDemoModel() {
         /*
