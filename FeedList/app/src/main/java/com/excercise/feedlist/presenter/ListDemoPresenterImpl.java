@@ -29,10 +29,19 @@ public class ListDemoPresenterImpl implements ListDemoPresenter, Callback<ListDa
     @Override
     public void onResponse(Call<ListData> call, Response<ListData> response) {
 
+        if (response.isSuccessful()) {
+            mView.setTitle(response.body().title);
+            mView.populateData(response.body().rows);
+        } else {
+            mView.showError(response.message());
+        }
+
     }
 
     @Override
     public void onFailure(Call<ListData> call, Throwable throwable) {
+
+        mView.showError(throwable.getMessage());
 
     }
 }
