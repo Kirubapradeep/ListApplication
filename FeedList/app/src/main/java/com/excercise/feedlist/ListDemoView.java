@@ -12,4 +12,6 @@ public interface ListDemoView {
     void setTitle(String title);
     void populateData(List<ListItem> data);
     void showError(String errorMessage);
+    void showLoading();
+    void hideLoading();
 }

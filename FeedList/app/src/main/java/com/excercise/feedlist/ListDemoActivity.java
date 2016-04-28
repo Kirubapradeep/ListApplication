@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.excercise.feedlist.model.ListItem;
@@ -23,6 +24,7 @@ public class ListDemoActivity extends AppCompatActivity implements ListDemoView,
     private RecyclerView mListView;
     private RelativeLayout mRootView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    ProgressBar mProgressBar = null;
 
     private ListDemoPresenter mPresenter;
 
@@ -31,12 +33,14 @@ public class ListDemoActivity extends AppCompatActivity implements ListDemoView,
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle(R.string.loading);
 
         ButterKnife.setDebug(true);
         ButterKnife.bind(this);
 
         mListView = (RecyclerView) findViewById(R.id.demo_list);
         mRootView = (RelativeLayout) findViewById(R.id.rootview);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.pull_to_refresh);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mListView.setLayoutManager(layoutManager);
@@ -45,8 +49,8 @@ public class ListDemoActivity extends AppCompatActivity implements ListDemoView,
 
         mPresenter = new ListDemoPresenterImpl(this);
         //Load the Data
-        mPresenter.requestData();
-        mSwipeRefreshLayout.setRefreshing(true);
+         mPresenter.requestData();
+         mSwipeRefreshLayout.setRefreshing(true);
      }
 
     /*
@@ -90,7 +94,18 @@ public class ListDemoActivity extends AppCompatActivity implements ListDemoView,
     }
 
     @Override
+    public void showLoading() {
+        mProgressBar.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void hideLoading() {
+        mProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
     public void onRefresh() {
-        mPresenter.requestData();
+        mPresenter.refreshData();
     }
 }

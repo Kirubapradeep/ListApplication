@@ -6,4 +6,5 @@ package com.excercise.feedlist.presenter;
 public interface ListDemoPresenter {
     // Fetching data from the Model
     void requestData();
+    void refreshData();
 }

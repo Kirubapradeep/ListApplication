@@ -40,6 +40,7 @@ public class ListDemoAdapter extends RecyclerView.Adapter<ListDemoAdapter.ViewHo
         holder.title.setText(item.getTitle());
         holder.description.setText(item.getDescription());
         mPicasso.load(item.getImageHref())
+                .placeholder(R.drawable.placeholder)
                 .resizeDimen(R.dimen.image_width, R.dimen.image_height)
                 .into(holder.imageView);
     }

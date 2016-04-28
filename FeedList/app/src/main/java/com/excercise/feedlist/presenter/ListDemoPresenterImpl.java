@@ -24,6 +24,12 @@ public class ListDemoPresenterImpl implements ListDemoPresenter, Callback<ListDa
 
     @Override
     public void requestData() {
+        mView.showLoading();
+        mModel.getListData(this);
+    }
+
+    @Override
+    public void refreshData() {
         mModel.getListData(this);
     }
 
@@ -38,6 +44,7 @@ public class ListDemoPresenterImpl implements ListDemoPresenter, Callback<ListDa
         } else {
             mView.showError(response.message());
         }
+        mView.hideLoading();
     }
 
     @Override
